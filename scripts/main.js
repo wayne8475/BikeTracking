@@ -47,6 +47,7 @@ loginbutton.addEventListener("click", function() {
             navbar2.className = "nav-item nav-link active";
             navbar3.className = "nav-item nav-link ";
             mode = 1;
+            initMap();
             trackwindow.style.display = "block";
         }
         else
