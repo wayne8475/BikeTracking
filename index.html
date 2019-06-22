@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, maximum-scale=1.0">
+	
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/083ac21fae.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	
+	<title>Bike Tracking App</title>
+	
+	<link rel="stylesheet" type="text/css" href="styles/main.css">
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #1c6368;">
+		<a class="navbar-brand" href="#"><i class="fas fa-bicycle"></i>  Bike Tracking</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+				<a class="nav-item nav-link active" href="#" id="homepage">首頁</a>
+				<a class="nav-item nav-link" href="#" id="trackpage">位置追蹤</a>
+				<a class="nav-item nav-link" href="#" id="alertpage">安全警示</a>
+			</div>
+		</div>
+	</nav>
+
+	<div id="loginwindow">
+		<div id="welcome-message1">歡迎回來!</div>
+		<div id="welcome-message2">請先登入來使用Bike Tracking的服務</div>
+		<form id="userform" autocomplete="on" method="dialog">
+			<div class="inputWrapper">
+				<h5 class="label">電子郵件</h5>
+				<input class="inputbox" id="account" type="email" name="email" required autofocus>
+			</div>
+			<div class="inputWrapper">
+				<h5 class="label">密碼</h5>
+				<input class="inputbox" id="password" type="password" name="password" required>
+			</div>
+			<button id="forgetpassword">忘記您的密碼？</button>
+			<button type="submit" id="loginbutton">登入</button>
+			<div id="register"><p>還沒有帳號？<a href="http://www.google.com">註冊</a></p></div>
+		</form>
+	</div>
+	
+	<div id="trackwindow">
+		<div id="map-title">查看您的腳踏車位置</div>
+		<iframe id="map" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d5875.52276443217!2d120.99441775780208!3d24.794253723550018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1szh-TW!2stw!4v1561200639352!5m2!1szh-TW!2stw"frameborder="0" style="border:0"  allowfullscreen></iframe>
+	</div>
+
+	<script type="text/javascript" src="scripts/main.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>
