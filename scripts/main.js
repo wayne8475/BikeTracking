@@ -183,7 +183,7 @@ function getTimevalue() {
         // 一切 ok, 繼續解析
         if (httpRequest.status === 200) {
             responseJSON = JSON.parse(httpRequest.responseText);
-            for(var i = 1;i < responseJSON.length;i++){
+            for(var i = responseJSON.length-1;i >= 1;i--){
                 if(responseJSON[i]["data"]!=null && responseJSON[i]["data"]!=0){
                     var battery = ((responseJSON[i]['data']*0.007).toFixed(3))+'(Volts)';
                     var movetime = responseJSON[i]['created_at'];
