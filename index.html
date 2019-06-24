@@ -56,6 +56,21 @@
 		<button id="getlocatbutton" type="button" class="btn btn-danger btn-lg">立即取得腳踏車的位置</button>
 	</div>
 
+	<div id="alertwindow">
+		<div id="table-title">今日移動警告觸發時間</div>
+		<table class="table table-striped table-dark" id="movetable">
+			<thead>
+			  <tr>
+				<th scope="col">#</th>
+				<th scope="col">感應器電量(電壓)</th>
+				<th scope="col">震動觸發時間</th>
+			  </tr>
+			</thead>
+			<tbody id= "tablebody">
+			</tbody>
+		  </table>
+	</div>
+
 	<script type="text/javascript" src="scripts/main.js"></script>
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBW2QfpyF_t-yKcoMv5g-JXnS783SbpnuI&callback=initMap"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
