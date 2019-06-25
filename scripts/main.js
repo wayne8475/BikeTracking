@@ -26,6 +26,7 @@ var httpRequest;
 var NTHU = {lat: 24.794950, lng: 120.993319};
 var Locat = {lat: 24.794950, lng: 120.993319};
 var polylinePathPoints=[];
+var polylinePath;
 
 var d = new Date();
 var date_filter = "?date_filter=";
@@ -132,7 +133,7 @@ getlocatbutton.addEventListener("click", function() {
         httpRequest = new XMLHttpRequest();
         httpRequest.withCredentials = true;
         httpRequest.onreadystatechange = setTimeout(getGPSvalue, 2000);
-        date_filter = "?date_filter=" + d.getFullYear() + '-' + (month <10 ? '0' : '') + month + '-' + (d.getDate()<10 ? '0' : '') + d.getDate()+' '+((d.getHours()-1)<10 ? '0' : '') + (d.getHours()-1) +":00:00" + '+-+' + d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (d.getDate()<10 ? '0' : '') + d.getDate()+' '+(d.getHours()<10 ? '0' : '') + d.getHours() +":00:00";
+        date_filter = "?date_filter=" + d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (d.getDate()<10 ? '0' : '') + d.getDate()+' '+((d.getHours()-2)<10 ? '0' : '') + (d.getHours()-2) +':'+(d.getMinutes()<10 ? '0' : '') + d.getMinutes()+':'+(d.getSeconds()<10 ? '0' : '') + d.getSeconds() + '+-+' + d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (d.getDate()<10 ? '0' : '') + d.getDate()+' '+(d.getHours()<10 ? '0' : '') + d.getHours() +':'+(d.getMinutes()<10 ? '0' : '') + d.getMinutes()+':'+(d.getSeconds()<10 ? '0' : '') + d.getSeconds();
         httpRequest.open('POST', 'https://campus.kits.tw/api/get/data/aa33f051'+date_filter, true);
         httpRequest.setRequestHeader('Authorization', 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjNiNzE0OGYxNmRlM2YxNWU0Y2ZmOGY2NTA2OTdhN2Q4MDJkNDE5YTg0ZjE2MjIzNTVjOWY5MDg2ZGQyMTIwMGU0NjljNjViNDM5YjllZjAzIn0.eyJhdWQiOiIyIiwianRpIjoiM2I3MTQ4ZjE2ZGUzZjE1ZTRjZmY4ZjY1MDY5N2E3ZDgwMmQ0MTlhODRmMTYyMjM1NWM5ZjkwODZkZDIxMjAwZTQ2OWM2NWI0MzliOWVmMDMiLCJpYXQiOjE1NjEyMzg2MDYsIm5iZiI6MTU2MTIzODYwNiwiZXhwIjoxNTkyODYxMDA2LCJzdWIiOiIyNyIsInNjb3BlcyI6W119.ZmiTZ4z5UxPXxTBpRQ9xK6py44RaGPgmLUpfB3ZUoTHowEOae1Wy9YHDl-IvOHVr_qtT6NV5EQ36MRBEdrGWvzWUSCefesvSrqnpLmPoDuigIS7JPALgJEmLEchQ0OJajjHouCcsNA0criHKIPoBlvTS88gzjFQ4140Qk7UT-QDF2Ls22GnrY8FqNBP_zwmdb3yb_SAgnCYYCyaiMdW6ZvX1Kx110asUpZ9-2QnKyRNguEEYGLAhNyS70KnmUBS_jRCSKvjmpCkeC7rXZlNKgm79h8lKOTxUnwbwtzFk2Rjbmdsk3VN4FLxE209iaL276KRXXoRwPueVQE21yIJvWiS77aNE7ok1-fPron-ChA7q4t9KgJ8nUlBtQH8ZT0cihDSIzDRJNmY_jPtlkA0EHMvDSbO5rbe06Iq93TKc-faMOHcvqR0kCN6FLGS1Tvwx1U8PYGsJTBzYU_I8Cm8tXfaLYrs1VHV75C6r_jt3KgyXNWsGbza-KY5AysIVyREKOhPOOSdayUVbHUvhegoeRuNuH8ZwaoBmKVPGRwtulThVBB2fe27qW1B3xUwc5yhtoETNEaLVK-23TPBV8JkXpk2xoRAhJuCDfQ_bJWICwCIt8kjUH3sBt8vz4M5PBhfpml0QmjCFHZB4xaLbB9xj-02HwnLO2wkS-AMiENqP3u0');
         httpRequest.setRequestHeader('Accept', 'application/json');
@@ -144,7 +145,7 @@ getlocatbutton.addEventListener("click", function() {
         httpRequest = new XMLHttpRequest();
         httpRequest.withCredentials = true;
         httpRequest.onreadystatechange = setTimeout(getGPSvalue, 2000);
-        date_filter = "?date_filter=" + d.getFullYear() + '-' + (month <10 ? '0' : '') + month + '-' + (d.getDate()<10 ? '0' : '') + d.getDate()+' '+((d.getHours()-1)<10 ? '0' : '') + (d.getHours()-1) +":00:00" + '+-+' + d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (d.getDate()<10 ? '0' : '') + d.getDate()+' '+(d.getHours()<10 ? '0' : '') + d.getHours() +":00:00";
+        date_filter = "?date_filter=" + d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (d.getDate()<10 ? '0' : '') + d.getDate()+' '+((d.getHours()-1)<10 ? '0' : '') + (d.getHours()-1) +':'+(d.getMinutes()<10 ? '0' : '') + d.getMinutes()+':'+(d.getSeconds()<10 ? '0' : '') + d.getSeconds() + '+-+' + d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (d.getDate()<10 ? '0' : '') + d.getDate()+' '+(d.getHours()<10 ? '0' : '') + d.getHours() +':'+(d.getMinutes()<10 ? '0' : '') + d.getMinutes()+':'+(d.getSeconds()<10 ? '0' : '') + d.getSeconds();
         httpRequest.open('POST', 'https://campus.kits.tw/api/get/data/aa33f051'+date_filter, true);
         httpRequest.setRequestHeader('Authorization', 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjNiNzE0OGYxNmRlM2YxNWU0Y2ZmOGY2NTA2OTdhN2Q4MDJkNDE5YTg0ZjE2MjIzNTVjOWY5MDg2ZGQyMTIwMGU0NjljNjViNDM5YjllZjAzIn0.eyJhdWQiOiIyIiwianRpIjoiM2I3MTQ4ZjE2ZGUzZjE1ZTRjZmY4ZjY1MDY5N2E3ZDgwMmQ0MTlhODRmMTYyMjM1NWM5ZjkwODZkZDIxMjAwZTQ2OWM2NWI0MzliOWVmMDMiLCJpYXQiOjE1NjEyMzg2MDYsIm5iZiI6MTU2MTIzODYwNiwiZXhwIjoxNTkyODYxMDA2LCJzdWIiOiIyNyIsInNjb3BlcyI6W119.ZmiTZ4z5UxPXxTBpRQ9xK6py44RaGPgmLUpfB3ZUoTHowEOae1Wy9YHDl-IvOHVr_qtT6NV5EQ36MRBEdrGWvzWUSCefesvSrqnpLmPoDuigIS7JPALgJEmLEchQ0OJajjHouCcsNA0criHKIPoBlvTS88gzjFQ4140Qk7UT-QDF2Ls22GnrY8FqNBP_zwmdb3yb_SAgnCYYCyaiMdW6ZvX1Kx110asUpZ9-2QnKyRNguEEYGLAhNyS70KnmUBS_jRCSKvjmpCkeC7rXZlNKgm79h8lKOTxUnwbwtzFk2Rjbmdsk3VN4FLxE209iaL276KRXXoRwPueVQE21yIJvWiS77aNE7ok1-fPron-ChA7q4t9KgJ8nUlBtQH8ZT0cihDSIzDRJNmY_jPtlkA0EHMvDSbO5rbe06Iq93TKc-faMOHcvqR0kCN6FLGS1Tvwx1U8PYGsJTBzYU_I8Cm8tXfaLYrs1VHV75C6r_jt3KgyXNWsGbza-KY5AysIVyREKOhPOOSdayUVbHUvhegoeRuNuH8ZwaoBmKVPGRwtulThVBB2fe27qW1B3xUwc5yhtoETNEaLVK-23TPBV8JkXpk2xoRAhJuCDfQ_bJWICwCIt8kjUH3sBt8vz4M5PBhfpml0QmjCFHZB4xaLbB9xj-02HwnLO2wkS-AMiENqP3u0');
         httpRequest.setRequestHeader('Accept', 'application/json');
@@ -175,17 +176,17 @@ function getGPSvalue() {
                 alert("最近一小時內並未有GPS位置資訊");
             }
             else{
-                var polylinePath = new google.maps.Polyline({
-                    path: polylinePathPoints,
-                    geodesic: true,
-                    strokeColor: '#008800',
-                    strokeOpacity: 1.0,
-                    strokeWeight: 20,
-                    editable: true,
-                    geodesic: false,
-                    draggable: false,
-                    clickable: true
-                  });
+                polylinePath = new google.maps.Polyline({
+                path: polylinePathPoints,
+                geodesic: true,
+                strokeColor: '#008800',
+                strokeOpacity: 1.0,
+                strokeWeight: 20,
+                editable: true,
+                geodesic: false,
+                draggable: false,
+                clickable: true
+            });
                 
                   polylinePath.setMap(map);
             }
