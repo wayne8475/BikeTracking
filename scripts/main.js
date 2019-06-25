@@ -25,6 +25,7 @@ var httpRequest;
 
 var NTHU = {lat: 24.794950, lng: 120.993319};
 var Locat = {lat: 24.794950, lng: 120.993319};
+var polylinePathPoints=[];
 
 var d = new Date();
 var date_filter = "?date_filter=";
@@ -161,12 +162,28 @@ function getGPSvalue() {
                         marked = 0;
                     }
                     Locat = {lat: parseFloat(responseJSON[i]["lat"]), lng: parseFloat(responseJSON[i]["lng"])};
+                    polylinePathPoints.push(Locat);
                     marker = new google.maps.Marker({position: Locat, map: map, animation: google.maps.Animation.BOUNCE});
                     marked = 1;
                 }
             }
             if(marked == 0){
                 alert("最近一小時內並未有GPS位置資訊");
+            }
+            else{
+                var polylinePath = new google.maps.Polyline({
+                    path: polylinePathPoints,
+                    geodesic: true,
+                    strokeColor: '#008800',
+                    strokeOpacity: 1.0,
+                    strokeWeight: 20,
+                    editable: true,
+                    geodesic: false,
+                    draggable: false,
+                    clickable: true
+                  });
+                
+                  polylinePath.setMap(map);
             }
             // 萬事具備
         } else {
