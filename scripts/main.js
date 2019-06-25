@@ -71,6 +71,7 @@ navbar1.addEventListener("click", function() {
     {
         if(marked){
             marker.setMap(null);
+            polylinePath.setMap(null);
             marked = 0;
         }
         navbar1.innerHTML = "首頁";
@@ -90,6 +91,7 @@ navbar3.addEventListener("click", function() {
     {
         if(marked){
             marker.setMap(null);
+            polylinePath.setMap(null);
             marked = 0;
         }
         trackwindow.style.display = "none";
@@ -113,6 +115,7 @@ navbar2.addEventListener("click", function() {
     {
         if(marked){
             marker.setMap(null);
+            polylinePath.setMap(null);
             marked = 0;
         }
         trackwindow.style.display = "block";
@@ -137,6 +140,7 @@ getlocatbutton.addEventListener("click", function() {
     }
     else{
         marker.setMap(null);
+        polylinePath.setMap(null);
         httpRequest = new XMLHttpRequest();
         httpRequest.withCredentials = true;
         httpRequest.onreadystatechange = setTimeout(getGPSvalue, 2000);
