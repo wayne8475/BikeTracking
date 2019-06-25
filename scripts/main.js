@@ -156,7 +156,11 @@ function getGPSvalue() {
             responseJSON = JSON.parse(httpRequest.responseText);
             for(var i = 1;i < responseJSON.length;i++){
                 if(responseJSON[i]["lat"]!=null){
-                    Locat = {lat: responseJSON[i]["lat"], lng: responseJSON[i]["lng"]};
+                    if(marked){
+                        marker.setMap(null);
+                        marked = 0;
+                    }
+                    Locat = {lat: parseFloat(responseJSON[i]["lat"]), lng: parseFloat(responseJSON[i]["lng"])};
                     marker = new google.maps.Marker({position: Locat, map: map, animation: google.maps.Animation.BOUNCE});
                     marked = 1;
                 }
